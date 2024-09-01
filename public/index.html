@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام تسجيل الدرجات (المعلمة ساريه عبد الرحمن)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>نظام تسجيل الدرجات (المعلمة ساريه عبد الرحمن)</h2>
+        <div id="loginForm">
+            <label for="userType">اختر نوع المستخدم:</label>
+            <select id="userType">
+                <option value="teacher">معلم</option>
+                <option value="parent">ولي أمر</option>
+            </select>
+
+            <label for="loginCode">كود الدخول:</label>
+            <input type="text" id="loginCode">
+            <button onclick="login()">دخول</button>
+        </div>
+
+        <div id="parentForm" class="hidden">
+            <h3>عرض الدرجات لأولياء الأمور</h3>
+            <label for="accessCode">ادخل الكود:</label>
+            <input type="text" id="accessCode">
+            <button onclick="getGrades()">عرض الدرجات</button>
+            <div id="gradeInfo" class="hidden">
+                <h3>سجل الدرجات</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>كود الطالب</th>
+                            <th>اسم الطالب</th>
+                            <th>Assessment 1</th>
+                            <th>Assessment 2</th>
+                            <th>Assessment 3</th>
+                            <th>Assessment 4</th>
+                            <th>Assessment 5</th>
+                            <th>Assessment 6</th>
+                            <th>Assessment 7</th>
+                            <th>Assessment 8</th>
+                            <th>Assessment 9</th>
+                            <th>Assessment 10</th>
+                        </tr>
+                    </thead>
+                    <tbody id="gradesTableBody"></tbody>
+                </table>
+            </div>
+            <div id="errorMessage" class="hidden">كود الطالب غير صحيح</div>
+        </div>
+
+        <div id="teacherForm" class="hidden">
+            <h3>إدخال درجات التقييمات</h3>
+            <label for="studentCode">كود الطالب:</label>
+            <input type="text" id="studentCode">
+
+            <label for="studentName">اسم الطالب:</label>
+            <input type="text" id="studentName">
+
+            <label for="assessmentType">نوع التقييم:</label>
+            <select id="assessmentType">
+                <option value="Assessment 1">Assessment 1</option>
+                <option value="Assessment 2">Assessment 2</option>
+                <option value="Assessment 3">Assessment 3</option>
+                <option value="Assessment 4">Assessment 4</option>
+                <option value="Assessment 5">Assessment 5</option>
+                <option value="Assessment 6">Assessment 6</option>
+                <option value="Assessment 7">Assessment 7</option>
+                <option value="Assessment 8">Assessment 8</option>
+                <option value="Assessment 9">Assessment 9</option>
+                <option value="Assessment 10">Assessment 10</option>
+            </select>
+
+            <label for="assessmentDate">تاريخ التقييم:</label>
+            <input type="date" id="assessmentDate">
+
+            <label for="grade">الدرجة:</label>
+            <input type="number" id="grade">
+
+            <button onclick="addGrade()">إضافة الدرجة</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
