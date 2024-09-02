@@ -1,16 +1,21 @@
+// استدعاء المكتبات اللازمة
 const express = require('express');
 const bodyParser = require('body-parser');
 const xlsx = require('xlsx');
 const path = require('path');
 
+// إنشاء تطبيق Express وتحديد المنفذ
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;  // استخدام المتغير PORT إذا كان متاحًا أو 3000 كخيار افتراضي
 
+// إعداد Body-Parser لاستقبال البيانات بصيغة JSON
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+// مسار ملف Excel
 const workbookPath = path.join(__dirname, 'grades.xlsx');
 
+// إضافة درجة طالب
 app.post('/add-grade', (req, res) => {
     const { studentCode, studentName, assessmentType, assessmentDate, grade } = req.body;
 
@@ -46,6 +51,7 @@ app.post('/add-grade', (req, res) => {
     res.json({ success: true, message: 'Grade added successfully' });
 });
 
+// جلب درجات الطالب
 app.post('/get-grades', (req, res) => {
     const { accessCode } = req.body;
 
@@ -62,6 +68,7 @@ app.post('/get-grades', (req, res) => {
     }
 });
 
+// بدء تشغيل السيرفر
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
